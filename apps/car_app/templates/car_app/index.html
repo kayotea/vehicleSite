@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Cars: Main Login/Reg Page</title>
+        {%load staticfiles %}
+    </head>
+    <body>
+        <div id="wrapper">
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            <br>
+            <h3>Register:</h3>
+            <form action="/register/process" method="post" class="form">
+            {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" name="username"><br>
+                <label for="password">Password:</label>
+                <input type="password" name="password"><br>
+                <label for="confirm_password">Confirm Password:</label>
+                <input type="password" name="confirm_password"><br>
+                <input type="submit" value="Register">
+            </form>
+            <h3>Login:</h3>
+            <form action="/login" method="post" class="form">
+            {% csrf_token %}
+                <label for="username">Username:</label>
+                <input type="text" name="username"><br>
+                <label for="password">Password:</label>
+                <input type="password" name="password"><br><br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </body>
+</html>
